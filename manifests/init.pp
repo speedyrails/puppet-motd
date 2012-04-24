@@ -9,8 +9,8 @@ class motd {
   exec { "update motd":
     refreshonly => true,
     command     => $operatingsystem ? {
-      /RedHat|CentOS|Fedora/ => "true",
-      /Debian|Ubuntu/ => "uname -snrvm > /var/run/motd && cat /etc/motd.tail >> /var/run/motd",
+      /RedHat|CentOS|Fedora/ => "/bin/true",
+      /Debian|Ubuntu/ => "/bin/uname -snrvm > /var/run/motd && /bin/cat /etc/motd.tail >> /var/run/motd",
     },
   }
 }
